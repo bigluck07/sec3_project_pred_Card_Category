@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Predict your Card
+{% endblock  %}
+
+{% block lead  %}
+부여받은 user_id를 통해 결과를 확인하세요. 결과확인후, User탭에서 본인의 정보를 삭제해 주세요.
+{% endblock  %}
+
+{% block main_body  %}
+<form method="GET" action="/predict">
+  <label>user_id</label>
+  <input name="user_id" style="margin-bottom:10px" class="form-control" type="text" />
+  <input type="submit" class="btn btn-primary" value="predict" />
+</form>
+
+{% if prediction %}
+<p>Your card is '{{prediction.result}}'</p>
+{% endif %}
+{% endblock  %}
