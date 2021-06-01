@@ -22,7 +22,7 @@ def create_app(config=None):
 
     from credit_card.routes import (main_route, user_route)
     app.register_blueprint(main_route.bp)
-    app.register_blueprint(user_route.bp, url_prefix='/api')
+    app.register_blueprint(user_route.bp)
 
     return app
 

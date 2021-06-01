@@ -19,13 +19,13 @@ class User(db.Model):
 def add_user(raw_user) :
     # 파싱
     new_user = User(
-        username = raw_user.username,
-        age = raw_user.age,
-        gender = raw_user.gender,
-        dependent = raw_user.dependent,
-        Edu_Level = raw_user.Edu_Level,
-        marige = raw_user.marige,
-        income = raw_user.income,
+        username = raw_user['username'],
+        age = raw_user['age'],
+        gender = raw_user['gender'],
+        dependent = raw_user['dependent'],
+        Edu_Level = raw_user['Edu_Level'],
+        marige = raw_user['marige'],
+        income = raw_user['income'],
         )
     # 있으면 저장 안함
     if User.query.filter(User.username == new_user.username).first() == None :
@@ -44,11 +44,11 @@ def get_users() :
 def get_user(username):
     return User.query.filter(User.username == username).first()
 
-def get_user1(user_id):
+def get_user_id(user_id):
     return User.query.filter(User.user_id == user_id).first()
 
-def delete_user(newuser_id) :
-    user = User.query.filter(User.user_id == newuser_id).first()
+def delete_user(user_id) :
+    user = User.query.filter(User.user_id == user_id).first()
     db.session.delete(user)
     db.session.commit()
 

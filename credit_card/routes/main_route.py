@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, request
-from credit_card.models.user_model import get_users, User
+from flask import Blueprint, render_template, request, redirect, url_for
+from credit_card.models.user_model import get_users, get_user, User
 from credit_card.utils import main_funcs
 
 bp = Blueprint('main', __name__)
@@ -21,7 +21,7 @@ def user_index():
     return render_template('user.html', alert_msg=alert_msg, user_list=user_list)
 
 
-@bp.route('/predict')
+@bp.route('/predict', methods=['GET','POST'])
 def compare_index():
     """
     users 에 유저들을 담아 넘겨주세요. 각 유저 항목은 다음과 같은 딕셔너리
@@ -37,24 +37,17 @@ def compare_index():
              "compare_text" : "사용자가 넘겨준 비교 문장을 담은 문자열입니다"
          }
     """
-    return render_template('predict.html')
-    # json_dict = request.get_json()
-    # username = request.form.get('username', None)
-    # user_info = User.query.filter(User.username == username).first()
+    prediction = {}
+    username = request.form.get('username', None)
 
-    # try: 
-    #     users = {
-    #             "id": [user_info.user_id],
-    #             "username": [user_info.username]
-    #             }    
-    # except:
-    #     users = []
-
-    # if request.method == "POST":
-    #     try:
-    #         result = main_funcs.predict_card(user_info)
-    #     except:
-    #         result, compare_text = None
-    #     prediction = {'result':result}
-        
-    # return render_template('predict.html', users=users, prediction=prediction), 200
+    if request.method == "POST":
+        # if get_user(username) == None:
+        #     prediction = {'result':result, "user": user}
+        user_info = get_user(username)
+        try:
+            user = username
+            result = main_funcs.predict_card(username)
+            prediction = {'result':result, "user": user}
+        except:
+            return redirect(url_for('main.user_index', msg_code=3), code=400)
+    return render_template('predict.html', prediction=prediction), 200
