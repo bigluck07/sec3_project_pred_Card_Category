@@ -1,3 +1,5 @@
+import os
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -10,4 +12,4 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite+pysqlite:///prod_db.sqlite3'
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
