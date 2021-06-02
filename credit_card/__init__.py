@@ -3,14 +3,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import config
+from dotenv import load_dotenv
+load_dotenv()
 
-# from dotenv import load_dotenv
-# from sqlalchemy import MetaData
 # load_dotenv()
+
 # DATABASE_URI = os.getenv('DATABASE_URL')
 # APP_SECRETKEY = os.getenv('APP_SECRETKEY')
-# db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
-# migrate = Migrate(compare_type=True)
+
 
 db = SQLAlchemy()
 migrate = Migrate()
