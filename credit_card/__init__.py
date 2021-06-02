@@ -6,12 +6,6 @@ import config
 from dotenv import load_dotenv
 load_dotenv()
 
-# load_dotenv()
-
-# DATABASE_URI = os.getenv('DATABASE_URL')
-# APP_SECRETKEY = os.getenv('APP_SECRETKEY')
-
-
 db = SQLAlchemy()
 migrate = Migrate()
 
