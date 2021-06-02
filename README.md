@@ -19,7 +19,7 @@
 
 ## 🖥️ Model
 ```
-LabelEncoder() # 카테고리들의 번주화
+LabelEncoder() # 카테고리들의 범주화
 Ensemble_pipe = make_pipeline(
     TargetEncoder(),
     SimpleImputer(),
