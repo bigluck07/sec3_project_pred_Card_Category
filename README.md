@@ -51,3 +51,5 @@ RandomizedSearchCV() # 최적의 파라미터값을 찾음
 - 해당 데이터베이스에서 사용되는 테이블의 스키마입니다.
 <img width="359" alt="스크린샷 2021-06-02 오후 12 07 16" src="https://user-images.githubusercontent.com/73811590/120418226-14b9cc00-c39b-11eb-8bb7-6e6cf6360bb0.png">
 
+# Project review
+- 모델의 과적합으로 하나의 등급만 부여합니다. 차후 데이터수집을 통해 데이터를 충분하게 만들고, 모델링 수정을 통해 업데이트 하여 모델의 성능을 높히고자 합니다
